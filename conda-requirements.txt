@@ -1,6 +1,6 @@
 ﻿# This file may be used to create an environment using:
 # $ conda create --name <env> --file <this file>
-### platform: win-64
+# platform: win-64
 ipython=2.3.1=py27_0
 ipython-notebook=2.3.1=py27_0
 jinja2=2.7.3=py27_1
