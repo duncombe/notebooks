@@ -1,0 +1,25 @@
+#! /bin/bash
+
+echo this is not working
+
+exit 2
+
+PIDFILE=~/var/run/ipython
+RUNDIR=$(dirname $PIDFILE) 
+
+if [ ! -d $RUNDIR ]; then
+	mkdir -p $RUNDIR
+fi
+
+if [ -e $PIDFILE ]; then
+	echo Already running a controlled ipython
+	exit 1
+else
+	touch $PIDFILE
+fi
+
+( 	. activate notebooks
+	ipython notebook && rm $PIDFILE &
+	echo  $! > $PIDFILE 
+)
+
