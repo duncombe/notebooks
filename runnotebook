@@ -1,5 +1,12 @@
 #! /bin/bash
 
+OS=`python  -mplatform | sed 's/-.*$//'`
+PLATFORM_REQS=${OS,,}-requirements.txt
+
+if [ ! -d $ANACONDA/envs/notebooks ]; then
+	conda create --name notebooks --file $PLATFORM_REQS
+fi
+
 . activate notebooks
 
 ipython notebook
