@@ -1,5 +1,19 @@
 #! /bin/bash
 
+FOUND_BROWSER=$(if [ -n `which google-chrome 2> /dev/null` ]; then
+			echo `which google-chrome` 
+		elif [ -n `which firefox 2> /dev/null` ]; then
+			echo `which firefox` 
+		fi)
+
+export BROWSER=${BROWSER:-$FOUND_BROWSER}
+
+exho $BROWSER
+
+export ANACONDA=${ANACONDA:-$HOME/anaconda}
+
+echo $ANACONDA
+
 OS=`python  -mplatform | sed 's/-.*$//'`
 PLATFORM_REQS=${OS,,}-requirements.txt
 
@@ -10,4 +24,6 @@ fi
 . activate notebooks
 
 ipython notebook
+
+# vim: se nowrap tw=0 :
 
