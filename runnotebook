@@ -8,7 +8,7 @@ FOUND_BROWSER=$(if [ -n `which google-chrome 2> /dev/null` ]; then
 
 export BROWSER=${BROWSER:-$FOUND_BROWSER}
 
-exho $BROWSER
+echo $BROWSER
 
 export ANACONDA=${ANACONDA:-$HOME/anaconda}
 
